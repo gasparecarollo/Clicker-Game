@@ -19,19 +19,20 @@ function App() {
     }
   }
 
-  const handleVictory = () => {
-    if (currentScore >= 100) {
-      alert(` VICTORRYYY!!! You have WON with a SCORE of ${currentScore}!`);
-    }
+  const handlePlayAgain = () => {
+    setCurrentScore(0);
+    setIncrementor(1);
   }
 
   return (
     <div className="app">
       <h1>Clicker Game</h1>
       <p > Score : {currentScore} </p>
-      <p> {handleVictory}</p>
-      <button onClick={handleScoreChange}>{`+ ${Incrementor}`} </button>
-      <button onClick={handlePay10}> Pay 10 Points to Change {Incrementor} to {Incrementor + 1}</button>
+
+      {currentScore < 100 ? (
+        <><button onClick={handleScoreChange}>{`+ ${Incrementor}`} </button>
+          <button onClick={handlePay10}> Pay 10 Points to Change {Incrementor} to {Incrementor + 1}</button></>) : (<> <p> YOU WIN! </p><button onClick={handlePlayAgain}> Play Again </button> </>)}
+
     </div>
 
   )
